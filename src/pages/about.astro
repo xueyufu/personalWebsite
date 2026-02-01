@@ -1,0 +1,199 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const experiences = [
+  {
+    period: '2022 - 至今',
+    company: 'B2B平台公司',
+    role: '高级产品经理',
+    problem: '负责核心协作平台的产品设计与迭代',
+    result: '用户活跃度提升40%，协作效率提升50%',
+    abilities: ['复杂系统结构化', '清晰表达推动协作'],
+  },
+  {
+    period: '2020 - 2022',
+    company: '数据产品公司',
+    role: '产品经理',
+    problem: '从0到1搭建数据分析平台',
+    result: '服务超过50家企业客户，数据决策效率提升60%',
+    abilities: ['复杂系统结构化', '不清晰场景决策'],
+  },
+];
+---
+
+<MainLayout title="关于我" currentPath="/about">
+  <section class="page-header">
+    <div class="container-narrow">
+      <h1 class="title-hero mb-3">将复杂问题结构化的产品经理</h1>
+      <p class="text-lead">
+        4年产品经验，专注于将复杂的系统、流程、知识拆解为清晰的框架。<br />
+        在不清晰的场景下做关键决策，用清晰表达推动团队协作。
+      </p>
+    </div>
+  </section>
+
+  <section class="about-section">
+    <div class="container">
+      <h2 class="title-section mb-5">我的价值观</h2>
+      <div class="values-grid">
+        <div class="value-card card">
+          <div class="value-icon">🧩</div>
+          <h3 class="title-sub mb-2">结构化思考</h3>
+          <p class="text-body text-muted">
+            任何复杂问题都可以拆解为清晰的框架。先建立结构，再填充细节。
+          </p>
+        </div>
+        <div class="value-card card">
+          <div class="value-icon">🎯</div>
+          <h3 class="title-sub mb-2">价值导向</h3>
+          <p class="text-body text-muted">
+            产品不是炫技，而是解决问题。始终关注业务价值和用户价值。
+          </p>
+        </div>
+        <div class="value-card card">
+          <div class="value-icon">🔄</div>
+          <h3 class="title-sub mb-2">持续迭代</h3>
+          <p class="text-body text-muted">
+            不追求完美方案，而是快速验证、持续优化。小步快跑，快速反馈。
+          </p>
+        </div>
+        <div class="value-card card">
+          <div class="value-icon">💬</div>
+          <h3 class="title-sub mb-2">清晰表达</h3>
+          <p class="text-body text-muted">
+            用简单的语言讲复杂的问题，让每个人都能理解并参与决策。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience-section">
+    <div class="container">
+      <h2 class="title-section mb-5">工作经历</h2>
+      <div class="experience-list">
+        {experiences.map((exp) => (
+          <div class="experience-item">
+            <div class="experience-header">
+              <div>
+                <h3 class="title-sub">{exp.role}</h3>
+                <p class="text-small text-muted">{exp.company} · {exp.period}</p>
+              </div>
+            </div>
+            <div class="experience-content card">
+              <div class="experience-point mb-3">
+                <span class="text-small text-muted">核心问题：</span>
+                <span class="text-body">{exp.problem}</span>
+              </div>
+              <div class="experience-point mb-3">
+                <span class="text-small text-muted">核心成果：</span>
+                <span class="text-body" style="color: var(--primary-color); font-weight: 500;">
+                  {exp.result}
+                </span>
+              </div>
+              <div class="experience-abilities">
+                {exp.abilities.map(ability => (
+                  <span class="tag ability-tag-sm">{ability}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container-narrow" style="text-align: center;">
+      <h2 class="title-section mb-4">想了解更多？</h2>
+      <p class="text-lead mb-5">
+        欢迎与我交流产品思维、案例或合作机会
+      </p>
+      <a href="/contact" class="btn btn-primary">联系我</a>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .page-header {
+    padding: 80px 0;
+  }
+
+  .about-section {
+    padding: 60px 0;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .value-card {
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .value-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .experience-section {
+    padding: 60px 0 80px;
+  }
+
+  .experience-list {
+    display: grid;
+    gap: 32px;
+  }
+
+  .experience-header {
+    margin-bottom: 16px;
+  }
+
+  .experience-content {
+    padding: 24px;
+  }
+
+  .experience-point {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .experience-abilities {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .ability-tag-sm {
+    font-size: 12px;
+    padding: 4px 12px;
+    background: var(--bg-light);
+    color: var(--primary-color);
+  }
+
+  .cta-section {
+    padding: 80px 0;
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: 40px 0;
+    }
+
+    .about-section {
+      padding: 40px 0;
+    }
+
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .experience-section {
+      padding: 40px 0 60px;
+    }
+  }
+</style>

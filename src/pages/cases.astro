@@ -1,0 +1,204 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const cases = [
+  {
+    id: 'collaboration-framework',
+    title: '从0搭建协作框架',
+    subtitle: '解决跨部门协作效率问题',
+    tags: ['复杂系统', '0-1', '跨部门'],
+    abilityTag: '复杂系统结构化',
+    challenge: '公司内部跨部门协作混乱，需求传递链路长，信息失真严重，项目经常延期',
+    framework: '信息收集 → 分层拆解 → 关系建模 → 优先级排序',
+    result: '协作效率提升50%',
+    href: '/cases/collaboration-framework',
+  },
+  {
+    id: 'conflict-resolution',
+    title: '需求冲突优先级模型',
+    subtitle: '解决多方需求冲突的决策难题',
+    tags: ['不清晰场景', '决策模型', '多方协作'],
+    abilityTag: '不清晰场景决策',
+    challenge: '产品、运营、技术团队对需求优先级认知不一致，决策周期长，项目推进缓慢',
+    framework: '问题定义 → 假设验证 → 权衡分析 → 迭代优化',
+    result: '决策周期缩短40%',
+    href: '/cases/conflict-resolution',
+  },
+  {
+    id: 'technical-simplification',
+    title: '复杂方案简化说明',
+    subtitle: '将技术方案转化为业务语言',
+    tags: ['清晰表达', '技术转化', '方案评审'],
+    abilityTag: '清晰表达推动协作',
+    challenge: '技术方案复杂，业务方无法理解，方案评审通过率低，反复沟通成本高',
+    framework: '受众分析 → 结构化表达 → 可视化呈现 → 确认与反馈',
+    result: '方案通过率提升70%',
+    href: '/cases/technical-simplification',
+  },
+];
+
+const abilityTags = [...new Set(cases.map(c => c.abilityTag))];
+---
+
+<MainLayout title="案例集" currentPath="/cases">
+  <section class="page-header">
+    <div class="container-narrow">
+      <h1 class="title-hero mb-3">解决问题的方式</h1>
+      <p class="text-lead">
+        每个案例都展示了"问题-思考-结果"的完整链路。<br />
+        我关注的是"解决什么问题"，而不是"用了什么技术"。
+      </p>
+    </div>
+  </section>
+
+  <section class="cases-section">
+    <div class="container">
+      <div class="filter-section">
+        <div class="filter-label text-small text-muted">按核心能力筛选：</div>
+        <div class="filter-tags">
+          <button class="filter-tag active" data-filter="all">全部</button>
+          {abilityTags.map(tag => (
+            <button class="filter-tag" data-filter={tag}>{tag}</button>
+          ))}
+        </div>
+      </div>
+
+      <div class="cases-grid">
+        {cases.map(c => (
+          <article class="card case-card" data-ability={c.abilityTag}>
+            <div class="case-header">
+              <div class="case-tags">
+                {c.tags.map(tag => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+              <span class="ability-tag">{c.abilityTag}</span>
+            </div>
+            <h3 class="title-card mb-2">{c.title}</h3>
+            <p class="text-body mb-3">{c.subtitle}</p>
+            <div class="case-challenge mb-4">
+              <span class="text-small text-muted">核心挑战：</span>
+              <span class="text-body">{c.challenge}</span>
+            </div>
+            <div class="case-footer">
+              <div class="case-result text-small text-muted">{c.result}</div>
+              <a href={c.href} class="btn btn-outline btn-sm">查看详情</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .page-header {
+    padding: 80px 0;
+  }
+
+  .cases-section {
+    padding: 40px 0 120px;
+  }
+
+  .filter-section {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .filter-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .filter-tag {
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-secondary);
+  }
+
+  .filter-tag:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+  }
+
+  .filter-tag.active {
+    background: var(--text-primary);
+    color: white;
+    border-color: var(--text-primary);
+  }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+  }
+
+  .case-card {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .case-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .ability-tag {
+    font-size: 12px;
+    color: var(--primary-color);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .case-challenge {
+    padding: 16px;
+    background: var(--bg-light);
+    border-radius: var(--radius-sm);
+    flex-grow: 1;
+  }
+
+  .case-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: 40px 0;
+    }
+
+    .cases-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .case-footer {
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+  }
+</style>

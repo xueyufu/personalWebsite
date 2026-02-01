@@ -1,0 +1,69 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPath?: string;
+}
+
+const { title, description, currentPath = '/' } = Astro.props;
+
+const navItems = [
+  { href: '/', label: '首页' },
+  { href: '/abilities', label: '核心能力' },
+  { href: '/cases', label: '案例集' },
+  { href: '/about', label: '关于' },
+  { href: '/contact', label: '联系' },
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- 导航栏 -->
+  <header class="navbar">
+    <div class="container">
+      <a href="/" class="logo">PM 作品集</a>
+      <nav>
+        <ul class="nav-links">
+          {navItems.map((item) => (
+            <li>
+              <a href={item.href} class:list={['nav-link', { active: currentPath === item.href }]}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 主内容区 -->
+  <main class="main-content">
+    <slot />
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer-text">&copy; 2026 个人作品集</p>
+    </div>
+  </footer>
+</BaseLayout>
+
+<style>
+  .main-content {
+    padding-top: 48px;
+    min-height: calc(100vh - 48px - 64px);
+  }
+
+  .footer {
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+</style>

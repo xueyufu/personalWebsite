@@ -1,0 +1,172 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout title="联系我" currentPath="/contact">
+  <section class="page-header">
+    <div class="container-narrow">
+      <h1 class="title-hero mb-3">与我交流</h1>
+      <p class="text-lead">
+        欢迎讨论产品思维、案例或合作机会
+      </p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-intro text-body-large mb-5">
+        <p>
+          如果你对我的案例感兴趣，想交流产品思维，或者有合作机会，欢迎随时联系我。
+        </p>
+      </div>
+
+      <div class="contact-cards">
+        <a href="mailto:your.email@example.com" class="contact-card card">
+          <div class="contact-icon">📧</div>
+          <h3 class="title-sub mb-2">邮箱</h3>
+          <p class="text-body text-muted">your.email@example.com</p>
+        </a>
+
+        <a href="#" class="contact-card card">
+          <div class="contact-icon">💼</div>
+          <h3 class="title-sub mb-2">LinkedIn</h3>
+          <p class="text-body text-muted">查看我的 LinkedIn</p>
+        </a>
+
+        <a href="#" class="contact-card card">
+          <div class="contact-icon">📱</div>
+          <h3 class="title-sub mb-2">微信</h3>
+          <p class="text-body text-muted">扫码添加（可选）</p>
+        </a>
+      </div>
+
+      <div class="contact-note mt-5" style="text-align: center;">
+        <p class="text-small text-muted">通常 24 小时内回复</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="topics-section">
+    <div class="container">
+      <h2 class="title-section mb-5" style="text-align: center;">可以聊什么</h2>
+      <div class="topics-grid">
+        <div class="topic-item">
+          <div class="topic-icon">💡</div>
+          <h3 class="title-sub mb-2">产品思维</h3>
+          <p class="text-body text-muted">复杂问题的拆解方法、决策框架</p>
+        </div>
+        <div class="topic-item">
+          <div class="topic-icon">📊</div>
+          <h3 class="title-sub mb-2">案例分析</h3>
+          <p class="text-body text-muted">具体案例的深入探讨、经验分享</p>
+        </div>
+        <div class="topic-item">
+          <div class="topic-icon">🤝</div>
+          <h3 class="title-sub mb-2">合作机会</h3>
+          <p class="text-body text-muted">全职工作、项目合作、咨询顾问</p>
+        </div>
+        <div class="topic-item">
+          <div class="topic-icon">🎓</div>
+          <h3 class="title-sub mb-2">职业发展</h3>
+          <p class="text-body text-muted">产品经理成长路径、转行建议</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container-narrow" style="text-align: center;">
+      <h2 class="title-section mb-4">想看案例？</h2>
+      <a href="/cases" class="btn btn-primary">查看案例集</a>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .page-header {
+    padding: 80px 0;
+  }
+
+  .contact-section {
+    padding: 60px 0;
+  }
+
+  .contact-intro {
+    max-width: 600px;
+    margin: 0 auto 48px;
+  }
+
+  .contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .contact-card {
+    padding: 32px 24px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-4px);
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .contact-card:hover .text-muted {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .contact-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  .topics-section {
+    padding: 60px 0 80px;
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+
+  .topic-item {
+    text-align: center;
+    padding: 32px 24px;
+  }
+
+  .topic-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .cta-section {
+    padding: 60px 0 80px;
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: 40px 0;
+    }
+
+    .contact-section {
+      padding: 40px 0;
+    }
+
+    .topics-section {
+      padding: 40px 0 60px;
+    }
+
+    .contact-cards,
+    .topics-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

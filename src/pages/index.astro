@@ -1,0 +1,186 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+// ========================================
+// 首页数据配置
+// ========================================
+
+// Hero 区数据
+const hero = {
+  title: '将复杂问题结构化的产品经理',
+  subtitle: '4年产品经验，专注于将复杂的系统、流程、知识拆解为清晰的框架。\n在不清晰的场景下做关键决策，用清晰表达推动团队协作。',
+  cta: {
+    primary: { text: '看案例', href: '/cases' },
+    secondary: { text: '联系我', href: '/contact' },
+  },
+};
+
+// 核心能力数据
+const abilities = [
+  {
+    icon: '🧩',
+    title: '复杂系统结构化',
+    description: '将混乱的信息、流程、知识拆解为清晰的框架，让团队对齐目标。',
+    evidence: '某企业级系统，梳理出3层治理模型，上线后问题处理效率提升60%',
+  },
+  {
+    icon: '🎯',
+    title: '不清晰场景决策',
+    description: '在信息不完整、需求冲突时，用结构化方法做关键判断。',
+    evidence: '面对多方需求冲突，建立优先级模型，决策周期缩短40%',
+  },
+  {
+    icon: '💬',
+    title: '清晰表达推动协作',
+    description: '用简单语言讲复杂问题，推动团队对齐目标和预期。',
+    evidence: '跨部门项目，将技术语言转化为业务语言，协作效率提升50%',
+  },
+];
+
+// 最新案例数据
+const featuredCase = {
+  title: '从0搭建协作框架',
+  subtitle: '解决跨部门协作效率问题',
+  tags: ['复杂系统', '0-1', '跨部门'],
+  result: '协作效率提升50%',
+  href: '/cases/collaboration-framework',
+};
+---
+
+<MainLayout title="首页" currentPath="/" description="将复杂问题结构化的产品经理">
+  <!-- ========================================
+       Hero 区
+       我想让招聘方明白：这个PM擅长解决什么问题（而非行业/技术标签）
+  ======================================== -->
+  <section class="section-hero">
+    <div class="container-narrow">
+      <h1 class="title-hero">{hero.title}</h1>
+      <p class="text-lead" set:html={hero.subtitle.replace(/\n/g, '<br>')}></p>
+      <div class="hero-cta">
+        <a href={hero.cta.primary.href} class="btn btn-primary">
+          {hero.cta.primary.text}
+        </a>
+        <a href={hero.cta.secondary.href} class="btn btn-secondary">
+          {hero.cta.secondary.text}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       能力概览
+       我想让招聘方明白：我的能力是结构化的，每个能力都有清晰的问题定义和量化证据
+  ======================================== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="title-section">核心能力</h2>
+      <div class="abilities-grid">
+        {abilities.map((ability) => (
+          <div class="ability-card card">
+            <div class="ability-icon">{ability.icon}</div>
+            <h3 class="title-card">{ability.title}</h3>
+            <p class="text-body">{ability.description}</p>
+            <p class="text-small text-muted mt-4">{ability.evidence}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       最新案例入口
+       我想让招聘方明白：案例证明了我能将复杂问题结构化解决，而非炫技
+  ======================================== -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2 class="title-section">最新案例</h2>
+      <div class="featured-case-card card">
+        <div class="case-header">
+          <div class="case-tags">
+            {featuredCase.tags.map((tag) => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+          <span class="case-result text-small">{featuredCase.result}</span>
+        </div>
+        <h3 class="title-card">{featuredCase.title}</h3>
+        <p class="text-body mb-4">{featuredCase.subtitle}</p>
+        <a href={featuredCase.href} class="btn btn-secondary btn-sm">查看详情</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  /* Hero CTA */
+  .hero-cta {
+    display: flex;
+    gap: 12px;
+  }
+
+  /* 能力网格 */
+  .abilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .ability-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ability-icon {
+    font-size: 32px;
+    margin-bottom: 16px;
+  }
+
+  /* 案例卡片 */
+  .bg-light {
+    background: var(--bg-light);
+  }
+
+  .featured-case-card {
+    max-width: 600px;
+  }
+
+  .case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .case-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .case-result {
+    color: var(--primary);
+    font-weight: 500;
+  }
+
+  /* 响应式 */
+  @media (max-width: 768px) {
+    .hero-cta {
+      flex-direction: column;
+    }
+
+    .hero-cta .btn {
+      width: 100%;
+    }
+
+    .abilities-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .case-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

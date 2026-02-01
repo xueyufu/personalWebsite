@@ -1,0 +1,387 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const caseData = {
+  title: '复杂方案简化说明',
+  subtitle: '将技术方案转化为业务语言',
+  tags: ['清晰表达', '技术转化', '方案评审'],
+  ability: '清晰表达推动协作',
+  result: '方案通过率提升70%',
+};
+
+const challenges = [
+  {
+    phenomenon: '技术方案复杂，业务方无法理解',
+    essence: '技术语言与业务语言存在"翻译"鸿沟',
+  },
+  {
+    phenomenon: '方案评审通过率低，反复沟通成本高',
+    essence: '缺乏面向业务方的"可视化"呈现方式',
+  },
+  {
+    phenomenon: '业务方质疑技术必要性，决策拖延',
+    essence: '技术价值没有用业务语言表达清楚',
+  },
+];
+
+const framework = [
+  {
+    step: 1,
+    title: '受众分析',
+    description: '识别方案评审的核心决策者（通常是业务负责人），了解他们的关注点（成本、收益、风险）和知识背景。',
+  },
+  {
+    step: 2,
+    title: '结构化表达',
+    description: '用"问题-方案-价值"三段式重构技术文档。技术细节放在附录，主文档聚焦业务价值。',
+  },
+  {
+    step: 3,
+    title: '可视化呈现',
+    description: '将架构图转化为流程图，用用户旅程替代系统设计。减少术语，用类比解释复杂概念。',
+  },
+  {
+    step: 4,
+    title: '确认与反馈',
+    description: '评审前1v1预沟通，收集反馈并调整。评审会上聚焦决策，而非技术细节。',
+  },
+];
+
+const insights = [
+  '技术方案的本质不是"展示复杂度"，而是"解释价值"',
+  '可视化不是为了"好看"，而是为了降低理解门槛',
+  '预沟通比正式评审更重要，提前达成共识能大幅提升效率',
+];
+---
+
+<MainLayout title="案例详情" currentPath="/cases">
+  <nav class="breadcrumb">
+    <div class="container">
+      <a href="/cases" class="text-small">← 返回案例集</a>
+    </div>
+  </nav>
+
+  <article class="case-detail">
+    <header class="case-header-section">
+      <div class="container-narrow">
+        <div class="case-meta mb-4">
+          <div class="case-tags">
+            {caseData.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+          <span class="ability-tag">{caseData.ability}</span>
+        </div>
+        <h1 class="title-hero mb-3">{caseData.title}</h1>
+        <p class="text-lead mb-4">{caseData.subtitle}</p>
+        <div class="case-result-box">
+          <span class="text-small text-muted">核心成果：</span>
+          <span class="result-value">{caseData.result}</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">问题背景</h2>
+        <div class="content-box card">
+          <p class="text-body mb-3">
+            技术团队要升级核心系统架构，但需要业务方的支持（包括预算和时间）。
+            然而技术方案文档充满专业术语，架构图复杂难懂，业务负责人无法理解"为什么要升级"、
+            "升级能带来什么价值"。
+          </p>
+          <p class="text-body">
+            连续几次方案评审都未能通过，业务方质疑技术必要性，技术团队感到委屈——"这么明显的架构问题，为什么他们看不懂"。
+            我作为产品经理，需要成为"翻译官"，将技术方案转化为业务语言。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">核心挑战</h2>
+        <div class="challenges-list">
+          {challenges.map((challenge, index) => (
+            <div class="challenge-item card">
+              <div class="challenge-number">{index + 1}</div>
+              <div class="challenge-content">
+                <div class="phenomenon">
+                  <span class="text-small text-muted">现象：</span>
+                  {challenge.phenomenon}
+                </div>
+                <div class="essence text-small text-muted">
+                  <span class="text-small">本质问题：</span>
+                  {challenge.essence}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">我的决策过程</h2>
+        <div class="framework-steps">
+          {framework.map((item) => (
+            <div class="framework-step card">
+              <div class="step-header">
+                <div class="step-badge">{item.step}</div>
+                <h3 class="title-sub">{item.title}</h3>
+              </div>
+              <p class="text-body">{item.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="decision-insight card mt-5">
+          <h3 class="title-sub mb-3">关键决策</h3>
+          <p class="text-body mb-3">
+            在方案呈现上，我面临一个选择：是保留完整的技术细节以展示专业性，还是大幅简化以降低理解门槛？
+          </p>
+          <p class="text-body">
+            技术团队担心简化方案会显得"不专业"，但业务方根本看不懂完整版。最终我选择了"分层呈现"策略：
+            主文档聚焦业务价值，用用户旅程替代架构图；技术细节作为附录保留，供有兴趣的人查阅。
+            这样既照顾了业务方的理解需求，也没有"丢掉"技术细节。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">结果与反思</h2>
+
+        <div class="result-section">
+          <div class="content-box card mb-4">
+            <h3 class="title-sub mb-3">量化成果</h3>
+            <ul class="result-list">
+              <li class="text-body">方案评审通过率从30%提升到70%</li>
+              <li class="text-body">方案沟通周期从平均2周缩短到1周</li>
+              <li class="text-body">业务方对技术方案的理解度显著提升</li>
+              <li class="text-body">技术团队与业务方的信任关系增强</li>
+            </ul>
+          </div>
+
+          <div class="content-box card mb-4">
+            <h3 class="title-sub mb-3">学到了什么</h3>
+            <ul class="insight-list">
+              {insights.map(insight => (
+                <li class="text-body">{insight}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="content-box card">
+            <h3 class="title-sub mb-3">如果重来，我会如何优化</h3>
+            <p class="text-body">
+              在这个案例中，我过度参与了方案重构，导致技术团队感觉被"替代"了。如果能重来，
+              我会更早地与技术团队协作，教他们如何用业务语言表达技术方案，而不是我来"翻译"。
+              技术人员具备业务表达能力，对长期协作更有价值。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-navigation">
+      <div class="container">
+        <div class="nav-buttons">
+          <a href="/cases/collaboration-framework" class="btn btn-outline">← 下一个案例</a>
+          <a href="/cases" class="btn btn-primary">返回案例集</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</MainLayout>
+
+<style>
+  .breadcrumb {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-detail {
+    padding-bottom: 80px;
+  }
+
+  .case-header-section {
+    padding: 60px 0;
+  }
+
+  .case-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .case-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .ability-tag {
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+
+  .case-result-box {
+    padding: 20px 24px;
+    background: var(--bg-light);
+    border-radius: var(--radius-md);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .result-value {
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .case-section {
+    padding: 60px 0;
+  }
+
+  .content-box {
+    padding: 32px;
+  }
+
+  .challenges-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .challenge-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    align-items: flex-start;
+  }
+
+  .challenge-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .phenomenon {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .framework-steps {
+    display: grid;
+    gap: 16px;
+  }
+
+  .framework-step {
+    padding: 24px;
+  }
+
+  .step-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .step-badge {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .decision-insight {
+    padding: 24px;
+    background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+    border: 1px solid #d0e0ff;
+  }
+
+  .result-list,
+  .insight-list {
+    list-style: none;
+  }
+
+  .result-list li,
+  .insight-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .result-list li:last-child,
+  .insight-list li:last-child {
+    border-bottom: none;
+  }
+
+  .result-list li::before,
+  .insight-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+
+  .case-navigation {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .case-header-section {
+      padding: 40px 0;
+    }
+
+    .case-meta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .challenge-item {
+      flex-direction: column;
+    }
+
+    .challenge-number {
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+    }
+
+    .nav-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

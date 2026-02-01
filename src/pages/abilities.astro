@@ -1,0 +1,263 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const abilities = [
+  {
+    id: 'structure',
+    icon: '🧩',
+    title: '复杂系统结构化',
+    description: '将混乱的信息、流程、知识拆解为清晰的框架，让团队对齐目标',
+    framework: [
+      '信息收集：梳理现状、识别问题域',
+      '分层拆解：将复杂系统分解为独立模块',
+      '关系建模：定义模块间依赖和数据流向',
+      '优先级排序：明确核心路径与可延后部分',
+    ],
+    cases: [
+      { title: '企业级系统治理模型', result: '问题处理效率提升60%' },
+      { title: '数据平台架构拆解', result: '需求评审时间缩短50%' },
+    ],
+    metrics: {
+      value: '60%',
+      label: '问题处理效率提升',
+    },
+  },
+  {
+    id: 'decision',
+    icon: '🎯',
+    title: '不清晰场景决策',
+    description: '在信息不完整、需求冲突时，用结构化方法做关键判断',
+    framework: [
+      '问题定义：明确核心目标和约束条件',
+      '假设验证：提出可验证的假设并设计实验',
+      '权衡分析：评估不同方案的利弊和风险',
+      '迭代优化：快速试错，基于反馈调整',
+    ],
+    cases: [
+      { title: '需求冲突优先级模型', result: '决策周期缩短40%' },
+      { title: '不确定性场景评估', result: '项目成功率提升30%' },
+    ],
+    metrics: {
+      value: '40%',
+      label: '决策周期缩短',
+    },
+  },
+  {
+    id: 'communication',
+    icon: '💬',
+    title: '清晰表达推动协作',
+    description: '用简单语言讲复杂问题，推动团队对齐目标和预期',
+    framework: [
+      '受众分析：理解对方背景和关注点',
+      '结构化表达：用MECE等框架组织信息',
+      '可视化呈现：用图表降低理解门槛',
+      '确认与反馈：确保对方理解并获取反馈',
+    ],
+    cases: [
+      { title: '跨部门协作语言转换', result: '协作效率提升50%' },
+      { title: '复杂方案简化说明', result: '方案通过率提升70%' },
+    ],
+    metrics: {
+      value: '50%',
+      label: '协作效率提升',
+    },
+  },
+];
+---
+
+<MainLayout title="核心能力" currentPath="/abilities">
+  <section class="page-header">
+    <div class="container-narrow">
+      <h1 class="title-hero mb-3">我是如何思考的</h1>
+      <p class="text-lead">
+        思考方式比经验更重要。无论在什么行业、面对什么产品，我始终用同样的框架解决问题。
+      </p>
+    </div>
+  </section>
+
+  <section class="abilities">
+    <div class="container">
+      {abilities.map((ability) => (
+        <div class="ability-section" id={ability.id}>
+          <div class="ability-header">
+            <div class="ability-icon">{ability.icon}</div>
+            <div>
+              <h2 class="title-card">{ability.title}</h2>
+              <p class="text-body text-muted">{ability.description}</p>
+            </div>
+            <div class="ability-metrics">
+              <div class="metrics-value">{ability.metrics.value}</div>
+              <div class="metrics-label">{ability.metrics.label}</div>
+            </div>
+          </div>
+
+          <div class="ability-content">
+            <div class="framework-card card">
+              <h3 class="title-sub mb-3">思考框架</h3>
+              <ol class="framework-list">
+                {ability.framework.map((step, i) => (
+                  <li class="framework-item">
+                    <span class="step-number">{i + 1}</span>
+                    <span class="step-text">{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div class="cases-card">
+              <h3 class="title-sub mb-3">应用案例</h3>
+              {ability.cases.map((c) => (
+                <div class="case-item">
+                  <div>
+                    <div class="case-title">{c.title}</div>
+                    <div class="case-result text-small text-muted">{c.result}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container-narrow" style="text-align: center;">
+      <h2 class="title-section mb-4">想看完整案例？</h2>
+      <a href="/cases" class="btn btn-primary">查看案例集</a>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .page-header {
+    padding: 80px 0;
+  }
+
+  .abilities {
+    padding: 40px 0 80px;
+  }
+
+  .ability-section {
+    margin-bottom: 80px;
+  }
+
+  .ability-header {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 32px;
+  }
+
+  .ability-icon {
+    font-size: 48px;
+    flex-shrink: 0;
+  }
+
+  .ability-metrics {
+    margin-left: auto;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .metrics-value {
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--primary-color);
+    line-height: 1;
+  }
+
+  .metrics-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  .ability-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .framework-card {
+    padding: 32px;
+  }
+
+  .framework-list {
+    list-style: none;
+  }
+
+  .framework-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .framework-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .step-text {
+    padding-top: 4px;
+  }
+
+  .cases-card {
+    padding: 24px;
+  }
+
+  .case-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-item:last-child {
+    border-bottom: none;
+  }
+
+  .case-title {
+    font-size: 17px;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .cta-section {
+    padding: 80px 0;
+  }
+
+  @media (max-width: 768px) {
+    .page-header {
+      padding: 40px 0;
+    }
+
+    .ability-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .ability-metrics {
+      margin-left: 0;
+      text-align: left;
+      margin-top: 16px;
+    }
+
+    .ability-content {
+      grid-template-columns: 1fr;
+    }
+
+    .abilities {
+      padding: 40px 0;
+    }
+  }
+</style>

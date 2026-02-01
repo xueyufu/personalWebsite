@@ -1,0 +1,383 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const caseData = {
+  title: '从0搭建协作框架',
+  subtitle: '解决跨部门协作效率问题',
+  tags: ['复杂系统', '0-1', '跨部门'],
+  ability: '复杂系统结构化',
+  result: '协作效率提升50%',
+};
+
+const challenges = [
+  {
+    phenomenon: '需求传递链路长，信息失真严重',
+    essence: '缺乏统一的信息流通渠道和标准',
+  },
+  {
+    phenomenon: '跨部门协作混乱，责任不清',
+    essence: '没有明确的分工和协作流程',
+  },
+  {
+    phenomenon: '项目经常延期，原因难以追溯',
+    essence: '缺乏透明的问题追踪和反馈机制',
+  },
+];
+
+const framework = [
+  {
+    step: 1,
+    title: '信息收集',
+    description: '梳理现状，识别问题域。访谈各部门，梳理现有协作流程，找到卡点。',
+  },
+  {
+    step: 2,
+    title: '分层拆解',
+    description: '将复杂的协作网络分解为3层：战略层（目标对齐）、战术层（流程设计）、执行层（任务跟踪）。',
+  },
+  {
+    step: 3,
+    title: '关系建模',
+    description: '定义部门间的协作接口和数据流向，建立标准化的需求传递模板。',
+  },
+  {
+    step: 4,
+    title: '优先级排序',
+    description: '明确核心路径与可延后部分，先解决最严重的信息失真问题。',
+  },
+];
+
+const insights = [
+  '复杂系统的治理需要分层，不能试图一次性解决所有问题',
+  '标准化流程是效率的基础，但需要留出灵活性空间',
+  '工具只能辅助，真正的协作文化更重要',
+];
+---
+
+<MainLayout title="案例详情" currentPath="/cases">
+  <nav class="breadcrumb">
+    <div class="container">
+      <a href="/cases" class="text-small">← 返回案例集</a>
+    </div>
+  </nav>
+
+  <article class="case-detail">
+    <header class="case-header-section">
+      <div class="container-narrow">
+        <div class="case-meta mb-4">
+          <div class="case-tags">
+            {caseData.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+          <span class="ability-tag">{caseData.ability}</span>
+        </div>
+        <h1 class="title-hero mb-3">{caseData.title}</h1>
+        <p class="text-lead mb-4">{caseData.subtitle}</p>
+        <div class="case-result-box">
+          <span class="text-small text-muted">核心成果：</span>
+          <span class="result-value">{caseData.result}</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">问题背景</h2>
+        <div class="content-box card">
+          <p class="text-body mb-3">
+            公司在快速发展期，部门间协作变得日益复杂。产品、运营、技术团队都有各自的工作节奏和沟通方式，
+            导致需求传递链条长、信息失真严重。项目经常延期，但很难找到具体责任方。
+          </p>
+          <p class="text-body">
+            作为负责协作平台的产品经理，我的任务不是搭建一个"完美"的系统，而是找到一个"够用"的切入点，
+            先解决最严重的问题，再逐步优化。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">核心挑战</h2>
+        <div class="challenges-list">
+          {challenges.map((challenge, index) => (
+            <div class="challenge-item card">
+              <div class="challenge-number">{index + 1}</div>
+              <div class="challenge-content">
+                <div class="phenomenon">
+                  <span class="text-small text-muted">现象：</span>
+                  {challenge.phenomenon}
+                </div>
+                <div class="essence text-small text-muted">
+                  <span class="text-small">本质问题：</span>
+                  {challenge.essence}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">我的决策过程</h2>
+        <div class="framework-steps">
+          {framework.map((item) => (
+            <div class="framework-step card">
+              <div class="step-header">
+                <div class="step-badge">{item.step}</div>
+                <h3 class="title-sub">{item.title}</h3>
+              </div>
+              <p class="text-body">{item.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="decision-insight card mt-5">
+          <h3 class="title-sub mb-3">关键决策</h3>
+          <p class="text-body">
+            最初我试图设计一个完整的协作平台，包含需求管理、任务分配、进度跟踪等所有功能。
+            但在访谈中发现，各部门最痛的是"信息传递失真"问题。于是我调整策略，先做标准化的需求模板，
+            建立清晰的信息传递链路，其他功能延后。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">结果与反思</h2>
+
+        <div class="result-section">
+          <div class="content-box card mb-4">
+            <h3 class="title-sub mb-3">量化成果</h3>
+            <ul class="result-list">
+              <li class="text-body">需求传递周期从平均5天缩短到2.5天</li>
+              <li class="text-body">信息失真率从40%降低到15%</li>
+              <li class="text-body">项目按时交付率从60%提升到85%</li>
+              <li class="text-body">跨部门协作满意度提升50%</li>
+            </ul>
+          </div>
+
+          <div class="content-box card mb-4">
+            <h3 class="title-sub mb-3">学到了什么</h3>
+            <ul class="insight-list">
+              {insights.map(insight => (
+                <li class="text-body">{insight}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="content-box card">
+            <h3 class="title-sub mb-3">如果重来，我会如何优化</h3>
+            <p class="text-body">
+              在这个案例中，我过于关注流程设计，忽略了"人"的因素。如果能重来，我会更早地引入部门负责人，
+              让他们参与框架的设计过程，这样不仅能减少阻力，还能让框架更贴合实际需求。工具只是手段，
+              真正的协作文化才是长期效果的关键。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-navigation">
+      <div class="container">
+        <div class="nav-buttons">
+          <a href="/cases/conflict-resolution" class="btn btn-outline">← 下一个案例</a>
+          <a href="/cases" class="btn btn-primary">返回案例集</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</MainLayout>
+
+<style>
+  .breadcrumb {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-detail {
+    padding-bottom: 80px;
+  }
+
+  .case-header-section {
+    padding: 60px 0;
+  }
+
+  .case-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .case-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .ability-tag {
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+
+  .case-result-box {
+    padding: 20px 24px;
+    background: var(--bg-light);
+    border-radius: var(--radius-md);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .result-value {
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .case-section {
+    padding: 60px 0;
+  }
+
+  .content-box {
+    padding: 32px;
+  }
+
+  .challenges-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .challenge-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    align-items: flex-start;
+  }
+
+  .challenge-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .phenomenon {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .framework-steps {
+    display: grid;
+    gap: 16px;
+  }
+
+  .framework-step {
+    padding: 24px;
+  }
+
+  .step-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .step-badge {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .decision-insight {
+    padding: 24px;
+    background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+    border: 1px solid #d0e0ff;
+  }
+
+  .result-list,
+  .insight-list {
+    list-style: none;
+  }
+
+  .result-list li,
+  .insight-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .result-list li:last-child,
+  .insight-list li:last-child {
+    border-bottom: none;
+  }
+
+  .result-list li::before,
+  .insight-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+
+  .case-navigation {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .case-header-section {
+      padding: 40px 0;
+    }
+
+    .case-meta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .challenge-item {
+      flex-direction: column;
+    }
+
+    .challenge-number {
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+    }
+
+    .nav-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>

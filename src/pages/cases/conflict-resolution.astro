@@ -1,0 +1,385 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const caseData = {
+  title: '需求冲突优先级模型',
+  subtitle: '解决多方需求冲突的决策难题',
+  tags: ['不清晰场景', '决策模型', '多方协作'],
+  ability: '不清晰场景决策',
+  result: '决策周期缩短40%',
+};
+
+const challenges = [
+  {
+    phenomenon: '产品、运营、技术团队对需求优先级认知不一致',
+    essence: '缺乏统一的决策标准和评估维度',
+  },
+  {
+    phenomenon: '需求评审会议效率低，反复讨论但难以定论',
+    essence: '决策依赖主观判断，缺乏结构化评估方法',
+  },
+  {
+    phenomenon: '紧急需求不断插入，计划频繁调整',
+    essence: '没有明确的紧急度定义和应对流程',
+  },
+];
+
+const framework = [
+  {
+    step: 1,
+    title: '问题定义',
+    description: '明确核心目标（业务价值最大化）和约束条件（资源有限）。收集各部门的目标，找到共同点。',
+  },
+  {
+    step: 2,
+    title: '假设验证',
+    description: '提出"业务价值 × 可行性 × 紧急度"的评估模型。通过小范围试点，验证模型的有效性。',
+  },
+  {
+    step: 3,
+    title: '权衡分析',
+    description: '评估不同决策路径：A）完全依赖模型（效率高但可能忽略特殊情况）；B）模型+人工评审（平衡但成本高）。选择B作为过渡方案。',
+  },
+  {
+    step: 4,
+    title: '迭代优化',
+    description: '基于反馈调整模型参数，增加例外处理流程。最终形成"模型筛选 + 极端情况人工评审"的稳定方案。',
+  },
+];
+
+const insights = [
+  '决策模型的价值不在于"精确"，而在于"共识"',
+  '在引入新方法时，先小范围验证再推广，能有效降低阻力',
+  '完美模型不存在，关键是要有明确的"例外处理"机制',
+];
+---
+
+<MainLayout title="案例详情" currentPath="/cases">
+  <nav class="breadcrumb">
+    <div class="container">
+      <a href="/cases" class="text-small">← 返回案例集</a>
+    </div>
+  </nav>
+
+  <article class="case-detail">
+    <header class="case-header-section">
+      <div class="container-narrow">
+        <div class="case-meta mb-4">
+          <div class="case-tags">
+            {caseData.tags.map(tag => (
+              <span class="tag">{tag}</span>
+            ))}
+          </div>
+          <span class="ability-tag">{caseData.ability}</span>
+        </div>
+        <h1 class="title-hero mb-3">{caseData.title}</h1>
+        <p class="text-lead mb-4">{caseData.subtitle}</p>
+        <div class="case-result-box">
+          <span class="text-small text-muted">核心成果：</span>
+          <span class="result-value">{caseData.result}</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">问题背景</h2>
+        <div class="content-box card">
+          <p class="text-body mb-3">
+            产品团队收到来自运营、市场、技术等多个部门的需求，但资源有限，必须做优先级排序。
+            每个部门都说自己的需求"紧急且重要"，但缺乏统一的评估标准。
+          </p>
+          <p class="text-body">
+            需求评审会议经常陷入无休止的争论，最终决策往往依赖"谁声音大"或"谁职位高"，而非客观评估。
+            我的任务是建立一个结构化的决策模型，让多方达成共识。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">核心挑战</h2>
+        <div class="challenges-list">
+          {challenges.map((challenge, index) => (
+            <div class="challenge-item card">
+              <div class="challenge-number">{index + 1}</div>
+              <div class="challenge-content">
+                <div class="phenomenon">
+                  <span class="text-small text-muted">现象：</span>
+                  {challenge.phenomenon}
+                </div>
+                <div class="essence text-small text-muted">
+                  <span class="text-small">本质问题：</span>
+                  {challenge.essence}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">我的决策过程</h2>
+        <div class="framework-steps">
+          {framework.map((item) => (
+            <div class="framework-step card">
+              <div class="step-header">
+                <div class="step-badge">{item.step}</div>
+                <h3 class="title-sub">{item.title}</h3>
+              </div>
+              <p class="text-body">{item.description}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="decision-insight card mt-5">
+          <h3 class="title-sub mb-3">关键决策</h3>
+          <p class="text-body mb-3">
+            在模型设计阶段，我面临一个选择：是完全依赖模型评分，还是保留人工评审空间？
+          </p>
+          <p class="text-body">
+            完全依赖模型的方案看似"公平"，但难以处理特殊情况（如战略级需求）。最终我选择了"模型筛选 + 人工评审"的混合方案，
+            模型先筛选出高优先级需求，对于评分接近或有争议的需求，进行人工讨论。这样既保证了效率，又保留了灵活性。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <div class="container">
+        <h2 class="title-section mb-5">结果与反思</h2>
+
+        <div class="result-section">
+          <div class="content-box card mb-4">
+            <h3 class="title-sub mb-3">量化成果</h3>
+            <ul class="result-list">
+              <li class="text-body">需求评审会议时长从平均2小时缩短到1小时</li>
+              <li class="text-body">决策周期从平均7天缩短到4天</li>
+              <li class="text-body">需求优先级争议减少60%</li>
+              <li class="text-body">各方对决策结果的接受度提升</li>
+            </ul>
+          </div>
+
+          <div class="content-box card mb-4">
+            <h3 class="title-sub mb-3">学到了什么</h3>
+            <ul class="insight-list">
+              {insights.map(insight => (
+                <li class="text-body">{insight}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="content-box card">
+            <h3 class="title-sub mb-3">如果重来，我会如何优化</h3>
+            <p class="text-body">
+              在推广初期，我过于强调模型的"客观性"，导致部分部门觉得被"规则束缚"。
+              如果重来，我会更早地让各部门参与模型参数的设计过程，让他们理解评分逻辑，
+              这样不仅能减少抵触情绪，还能让模型更贴合业务实际。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-navigation">
+      <div class="container">
+        <div class="nav-buttons">
+          <a href="/cases/technical-simplification" class="btn btn-outline">← 下一个案例</a>
+          <a href="/cases" class="btn btn-primary">返回案例集</a>
+        </div>
+      </div>
+    </section>
+  </article>
+</MainLayout>
+
+<style>
+  .breadcrumb {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .case-detail {
+    padding-bottom: 80px;
+  }
+
+  .case-header-section {
+    padding: 60px 0;
+  }
+
+  .case-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .case-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .ability-tag {
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+
+  .case-result-box {
+    padding: 20px 24px;
+    background: var(--bg-light);
+    border-radius: var(--radius-md);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .result-value {
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .case-section {
+    padding: 60px 0;
+  }
+
+  .content-box {
+    padding: 32px;
+  }
+
+  .challenges-list {
+    display: grid;
+    gap: 16px;
+  }
+
+  .challenge-item {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    align-items: flex-start;
+  }
+
+  .challenge-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .phenomenon {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .framework-steps {
+    display: grid;
+    gap: 16px;
+  }
+
+  .framework-step {
+    padding: 24px;
+  }
+
+  .step-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .step-badge {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .decision-insight {
+    padding: 24px;
+    background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 100%);
+    border: 1px solid #d0e0ff;
+  }
+
+  .result-list,
+  .insight-list {
+    list-style: none;
+  }
+
+  .result-list li,
+  .insight-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    padding-left: 24px;
+    position: relative;
+  }
+
+  .result-list li:last-child,
+  .insight-list li:last-child {
+    border-bottom: none;
+  }
+
+  .result-list li::before,
+  .insight-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+
+  .case-navigation {
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .case-header-section {
+      padding: 40px 0;
+    }
+
+    .case-meta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .challenge-item {
+      flex-direction: column;
+    }
+
+    .challenge-number {
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+    }
+
+    .nav-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+</style>
